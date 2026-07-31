@@ -177,36 +177,26 @@ const cors = require("cors");
 const multer = require("multer");
 require("dotenv").config();
 
-const connectDatabase = require(
-  "./config/database"
-);
-
-const predictionRoutes = require(
-  "./routes/predictRoutes"
-);
-
-const feedbackRoutes = require(
-  "./routes/feedbackRoutes"
-);
+const connectDatabase = require("./config/database");
+const predictionRoutes = require("./routes/predictRoutes");
+const feedbackRoutes = require("./routes/feedbackRoutes");
 
 const app = express();
-
 const PORT = process.env.PORT || 5000;
 
 connectDatabase();
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:3000",
-  "https://research-internship.vercel.app",
-];
-
+/*
+  Demo deployment:
+  Allow requests from localhost, Vercel and Postman.
+*/
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: true,
     methods: [
       "GET",
       "POST",
+      "PUT",
       "PATCH",
       "DELETE",
       "OPTIONS",
@@ -215,32 +205,24 @@ app.use(
       "Content-Type",
       "Authorization",
     ],
-    credentials: true,
   })
 );
-
-app.options("*", cors());
 
 app.use(express.json());
 
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
-    message:
-      "Oil Adulteration Express API is running",
+    message: "Oil Adulteration Express API is running",
   });
 });
 
-app.use(
-  "/api/predict",
-  predictionRoutes
-);
+app.use("/api/predict", predictionRoutes);
+app.use("/api/feedback", feedbackRoutes);
 
-app.use(
-  "/api/feedback",
-  feedbackRoutes
-);
-
+/*
+  Multer and general error handler
+*/
 app.use((error, req, res, next) => {
   console.error("Server error:", error);
 
@@ -251,13 +233,9 @@ app.use((error, req, res, next) => {
     });
   }
 
-  return res.status(
-    error.status || 500
-  ).json({
+  return res.status(error.status || 500).json({
     success: false,
-    message:
-      error.message ||
-      "Internal server error",
+    message: error.message || "Internal server error",
   });
 });
 
@@ -268,8 +246,6 @@ app.use((req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(
-    `Express server running on port ${PORT}`
-  );
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Express server running on port ${PORT}`);
 });
