@@ -1,0 +1,21 @@
+[
+  {
+    "id": "1785523713348-58kj30a",
+    "fileName": "WhatsApp Image 2026-07-31 at 8.59.07 PM.jpeg",
+    "predictedClass": "Soyabean_20_Palm",
+    "isCorrect": true,
+    "correctClass": "Soyabean_20_Palm",
+    "createdAt": "2026-07-31T18:48:33.348Z"
+  },
+  {
+    "id": "1785524887961-iy1a21d",
+    "originalFileName": "WhatsApp Image 2026-07-31 at 8.59.07 PM.jpeg",
+    "savedFileName": "1785524887957-WhatsApp_Image_2026-07-31_at_8.59.07_PM.jpeg",
+    "imagePath": "feedback-images/Soyabean_20_Palm/1785524887957-WhatsApp_Image_2026-07-31_at_8.59.07_PM.jpeg",
+    "predictedClass": "Soyabean_20_Palm",
+    "isCorrect": true,
+    "correctClass": "Soyabean_20_Palm",
+    "status": "pending-verification",
+    "createdAt": "2026-07-31T19:08:07.961Z"
+  }
+]
