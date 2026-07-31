@@ -198,31 +198,12 @@ connectDatabase();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
-  process.env.FRONTEND_URL,
-].filter(Boolean);
+  "https://research-internship.vercel.app",
+];
 
 app.use(
   cors({
-    origin(origin, callback) {
-      // Postman and server-to-server requests
-      // may not contain an Origin header.
-      if (!origin) {
-        callback(null, true);
-        return;
-      }
-
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-        return;
-      }
-
-      callback(
-        new Error(
-          `CORS blocked for origin: ${origin}`
-        )
-      );
-    },
-
+    origin: allowedOrigins,
     methods: [
       "GET",
       "POST",
@@ -230,15 +211,15 @@ app.use(
       "DELETE",
       "OPTIONS",
     ],
-
     allowedHeaders: [
       "Content-Type",
       "Authorization",
     ],
-
     credentials: true,
   })
 );
+
+app.options("*", cors());
 
 app.use(express.json());
 
@@ -260,9 +241,6 @@ app.use(
   feedbackRoutes
 );
 
-/*
-  Multer and general error handler
-*/
 app.use((error, req, res, next) => {
   console.error("Server error:", error);
 
@@ -273,16 +251,14 @@ app.use((error, req, res, next) => {
     });
   }
 
-  if (error) {
-    return res.status(400).json({
-      success: false,
-      message:
-        error.message ||
-        "Something went wrong",
-    });
-  }
-
-  next();
+  return res.status(
+    error.status || 500
+  ).json({
+    success: false,
+    message:
+      error.message ||
+      "Internal server error",
+  });
 });
 
 app.use((req, res) => {
@@ -295,10 +271,5 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(
     `Express server running on port ${PORT}`
-  );
-
-  console.log(
-    "Allowed frontend origins:",
-    allowedOrigins
   );
 });
