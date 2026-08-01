@@ -335,13 +335,13 @@ Model Storage
 
 # Contributors
 
-Tanishq 
+Tanishq Gupta
 
 Avdhut Magar
 
-Athrav H
+Athrav Hedaoo
 
-Sarthak
+Sarthak Kanhere
 
 
 Research Internship Project
@@ -349,6 +349,6 @@ Research Internship Project
 ---
 ---
 # Project Mentor
-Ms. Vaishali Raichurkar
+Dr. Vaishali Kamble
 
 ---
