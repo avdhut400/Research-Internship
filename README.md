@@ -348,7 +348,7 @@ Research Internship Project
 
 ---
 ---
-# Mentor
- Vaishali Raichurkar
+# Project Mentor
+Ms. Vaishali Raichurkar
 
 ---
