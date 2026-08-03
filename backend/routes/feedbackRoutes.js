@@ -9,7 +9,7 @@ const {
 } = require(
   "../controllers/feedbackController"
 );
-
+const adminAuth = require("../middleware/adminAuth");
 const router = express.Router();
 
 const allowedTypes = [
@@ -50,15 +50,17 @@ router.post(
   createFeedback
 );
 
-router.get("/", getAllFeedback);
+router.get("/", adminAuth, getAllFeedback);
 
 router.patch(
   "/:id/status",
+  adminAuth,
   updateFeedbackStatus
 );
 
 router.delete(
   "/:id",
+  adminAuth,
   deleteFeedback
 );
 

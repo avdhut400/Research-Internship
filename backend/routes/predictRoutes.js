@@ -1,7 +1,7 @@
 const express = require("express");
 
 const multer = require("multer");
-
+const userAuth = require("../middleware/userAuth");
 const predictionController =
 require("../controllers/predictController");
 
@@ -15,6 +15,7 @@ const upload = multer({
 
 router.post(
     "/",
+    userAuth,
     upload.single("image"),
     predictionController.predict
 );

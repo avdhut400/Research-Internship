@@ -180,6 +180,9 @@ require("dotenv").config();
 const connectDatabase = require("./config/database");
 const predictionRoutes = require("./routes/predictRoutes");
 const feedbackRoutes = require("./routes/feedbackRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const userAuthRoutes = require("./routes/userAuthRoutes");
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -208,8 +211,10 @@ app.use(
   })
 );
 
-app.use(express.json());
 
+
+app.use(express.json());
+app.use("/api/admin", adminRoutes);
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
@@ -219,7 +224,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/predict", predictionRoutes);
 app.use("/api/feedback", feedbackRoutes);
-
+app.use("/api/users", userAuthRoutes);
 /*
   Multer and general error handler
 */
