@@ -2,9 +2,13 @@
 
 ## Overview
 
-Oil Adulteration Detection is an AI-powered web application that identifies whether an edible oil sample is pure or adulterated using a Vision Transformer (ViT-B/16) deep learning model.
+Oil Adulteration Detection is an AI-powered web application designed to detect and classify adulteration in edible oil samples using deep learning. The system allows users to select the type of edible oil, upload an image of the sample, and obtain a predicted adulteration level through a simple and user-friendly interface.
 
-The system provides real-time predictions, allows users to submit correction feedback, enables administrators to verify feedback, and continuously improves the AI model through a feedback-driven retraining pipeline.
+The application utilizes a Vision Transformer (ViT-B/16) model for image-based analysis and provides real-time prediction results. It also incorporates a feedback mechanism that allows users to submit corrections for inaccurate predictions. Administrator-verified feedback can be used in the model retraining pipeline, enabling continuous improvement of the system over time.
+
+The project aims to provide an accessible, efficient, and intelligent approach to edible oil quality assessment by combining deep learning, image analysis, web-based deployment, and feedback-driven model improvement.
+
+
 
 ---
 
