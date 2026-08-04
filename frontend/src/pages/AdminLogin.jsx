@@ -196,9 +196,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const ADMIN_LOGIN_API = `${
-  import.meta.env.VITE_API_URL || "http://localhost:5000"
-}/api/admin/login`;
+// const ADMIN_LOGIN_API = `${
+//   import.meta.env.VITE_API_URL || "http://localhost:5000"
+// }/api/admin/login`;
+const ADMIN_LOGIN_API = `${import.meta.env.VITE_API_URL}/api/admin/login`;
 
 export default function AdminLogin() {
   const navigate = useNavigate();
